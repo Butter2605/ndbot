@@ -1,3 +1,5 @@
+const players = require('../models/players');
+
 module.exports = {
     name: 'joindate',
     aliases: ['jd'],
@@ -9,6 +11,11 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async (bot, user, args) => {
-        bot.chat(`> Ping của ${user} hiện tại là: ${bot.players[user].ping}ms`);
+        players.findOne({ username: user }).then((data) => {
+            if (data) {
+                const joindate = data.joinDate;
+                bot.chat(`> Người chơi ${user} đã tham gia server từ ngày ${joindate.getDate()}/${joindate.getMonth()+1}/${joindate.getFullYear()}`)
+            }
+        })
     }
 }
