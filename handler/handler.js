@@ -19,10 +19,4 @@ module.exports = async (bot) => {
         const event = require(`../events/${file}`);
         bot.on(event.name, (...args) => {event.execute(bot, ...args)});
     });
-
-    // mongodb
-    const mongooseConnectionString = process.env.mongodb;
-    if (!mongooseConnectionString) return;
-
-    mongoose.connect(mongooseConnectionString).then(() => console.log('Connected to mongodb'));
 }

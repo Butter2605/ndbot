@@ -19,3 +19,9 @@ function createBot() {
 }
 module.exports = createBot;
 createBot()
+
+// mongodb
+const mongooseConnectionString = process.env.mongodb;
+if (!mongooseConnectionString) return;
+
+mongoose.connect(mongooseConnectionString).then(() => console.log('Connected to mongodb'));
