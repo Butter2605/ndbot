@@ -9,7 +9,7 @@ module.exports = {
      */
     async execute (bot, reason) {
         console.log(`Bot đã mất kết nối tới server ${process.env.mc_host}, nguyên nhân: ${reason}`);
-        console.log('Kết nối lại sau 5 giây')
-        setTimeout(() => { createBot(); }, 5000)
+        console.log('Kết nối lại sau 15 giây')
+        setTimeout(() => { createBot(); }, 15000)
     }
 }
