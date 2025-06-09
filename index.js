@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 function createBot() {
     // init everything
     const bot = mineflayer.createBot({
-        host: env.host,
-        username: env.username,
+        host: env.mc_host,
+        username: env.mc_username,
         hideErrors: false,
         version: 763, // protocol version 1.20.1
     });

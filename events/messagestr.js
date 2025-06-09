@@ -11,10 +11,10 @@ module.exports = {
 
         // login
         if (msg.includes('/register')) {
-            bot.chat(`/register ${process.env.passphrase} ${process.env.passphrase}`);
+            bot.chat(`/register ${process.env.mc_passphrase} ${process.env.mc_passphrase}`);
             logged = true
         } else if (msg.includes('/login')) {
-            bot.chat(`/login ${process.env.passphrase}`);
+            bot.chat(`/login ${process.env.mc_passphrase}`);
             logged = true
         }
 
