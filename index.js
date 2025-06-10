@@ -2,6 +2,7 @@ const mineflayer = require('mineflayer')
 require('dotenv').config();
 const env = process.env;
 const mongoose = require('mongoose');
+require('./web')();
 
 function createBot() {
     // init everything
