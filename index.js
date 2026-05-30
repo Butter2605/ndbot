@@ -17,12 +17,14 @@ function createBot() {
     bot.aliases = [];
     require(`./handler/handler`)(bot);
 
+    bot.step = 'Auth'; // [Auth, Queue, 2Y2C]
+
 }
 module.exports = createBot;
 createBot()
 
 // mongodb
-const mongooseConnectionString = process.env.mongodb;
-if (!mongooseConnectionString) return;
+// const mongooseConnectionString = process.env.mongodb;
+// if (!mongooseConnectionString) return;
 
-mongoose.connect(mongooseConnectionString).then(() => console.log('Connected to mongodb'));
+// mongoose.connect(mongooseConnectionString).then(() => console.log('Connected to mongodb'));

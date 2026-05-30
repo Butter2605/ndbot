@@ -15,8 +15,7 @@ module.exports = {
         c.name === cmd || (c.aliases && c.aliases.includes(cmd))
         );
 
-        if (command.run) {
-            command.run(bot, user, args);
-        }
+        if (!command) return;
+        command.run(bot, user, args);
     }
 }
