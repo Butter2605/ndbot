@@ -11,11 +11,11 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async (bot, user, args) => {
-        // players.findOne({ username: user }).then((data) => {
-        //     if (data) {
-        //         const joindate = data.joinDate;
-        //         bot.chat(`> Người chơi ${user} đã tham gia server từ ngày ${joindate.getDate()}/${joindate.getMonth()+1}/${joindate.getFullYear()}`)
-        //     }
-        // })
+        players.findOne({ username: user }).then((data) => {
+            if (data) {
+                const joindate = data.joinDate;
+                bot.whisper(user, `Ngày tham gia (tính từ 31/5/2026): ${joindate.getDate()}/${joindate.getMonth()+1}/${joindate.getFullYear()}`)
+            }
+        })
     }
 }
