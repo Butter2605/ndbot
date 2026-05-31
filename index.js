@@ -17,7 +17,7 @@ function createBot() {
     bot.aliases = [];
     require(`./handler/handler`)(bot);
 
-    bot.step = 'Auth'; // [Auth, Queue, 2Y2C]
+    // bot.step = 'Auth'; // [Auth, Queue, 2Y2C]
 
 }
 module.exports = createBot;

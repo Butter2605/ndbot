@@ -8,6 +8,6 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async (bot, user, args) => {
-        bot.chat(`> Ping của ${user} hiện tại là: ${bot.players[user].ping}ms`);
+        bot.whisper(user, `Ping: ${bot.players[user].ping}ms`);
     }
 }

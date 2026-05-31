@@ -17,6 +17,10 @@ module.exports = async (bot) => {
     // events
     fs.readdirSync('./events').filter(f => f.endsWith('.js')).forEach(file => {
         const event = require(`../events/${file}`);
-        bot.on(event.name, (...args) => {event.execute(bot, ...args)});
+        if (event.once) {
+            bot.once(event.name, (...args) => {event.execute(bot, ...args)});
+        } else {
+            bot.on(event.name, (...args) => {event.execute(bot, ...args)});
+        }
     });
 }
