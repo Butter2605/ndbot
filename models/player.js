@@ -5,8 +5,6 @@ let Schema = new mongoose.Schema({
 
     // joinDate
     joinDate: Date,
-    // offlineWhisper
-    offlineWhisper: String
 });
 
 module.exports = mongoose.model('players', Schema);

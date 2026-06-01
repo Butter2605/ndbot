@@ -1,4 +1,4 @@
-const createBot = require("../index");
+const createBot = require("../../index");
 
 module.exports = {
     name: 'end',

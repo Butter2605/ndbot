@@ -15,12 +15,24 @@ module.exports = async (bot) => {
     });
 
     // events
-    fs.readdirSync('./events').filter(f => f.endsWith('.js')).forEach(file => {
-        const event = require(`../events/${file}`);
-        if (event.once) {
-            bot.once(event.name, (...args) => {event.execute(bot, ...args)});
-        } else {
-            bot.on(event.name, (...args) => {event.execute(bot, ...args)});
-        }
-    });
+    // fs.readdirSync('./events').filter(f => f.endsWith('.js')).forEach(file => {
+    //     const event = require(`../events/${file}`);
+    //     if (event.once) {
+    //         bot.once(event.name, (...args) => {event.execute(bot, ...args)});
+    //     } else {
+    //         bot.on(event.name, (...args) => {event.execute(bot, ...args)});
+    //     }
+    // });
+
+    // events in folders
+    fs.readdirSync('./events').forEach(dir => {
+        fs.readdirSync(`./events/${dir}`).filter(f => f.endsWith('.js')).forEach(file => {
+            const event = require(`../events/${dir}/${file}`);
+            if (event.once) {
+                bot.once(event.name, (...args) => {event.execute(bot, ...args)});
+            } else {
+                bot.on(event.name, (...args) => {event.execute(bot, ...args)});
+            }
+        })
+    })
 }

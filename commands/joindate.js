@@ -1,4 +1,4 @@
-const players = require('../models/players');
+const players = require('../models/player');
 
 module.exports = {
     name: 'joindate',

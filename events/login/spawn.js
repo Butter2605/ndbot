@@ -1,4 +1,4 @@
-const { messages } = require('../data.json');
+const { messages } = require('../../data.json');
 
 module.exports = {
     name: 'spawn',
@@ -15,9 +15,9 @@ module.exports = {
             bot.chat(`/login ${process.env.mc_passphrase}`);
         }, 6500);
 
-        setInterval(function() {
-            let rngMsg = messages[Math.floor(Math.random() * messages.length)];
-            bot.chat(rngMsg);
-        }, 15*60*1000)
+        // setInterval(function() {
+        //     let rngMsg = messages[Math.floor(Math.random() * messages.length)];
+        //     bot.chat(rngMsg);
+        // }, 15*60*1000)
     }
 }

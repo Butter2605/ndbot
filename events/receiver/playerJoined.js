@@ -1,4 +1,5 @@
-const players = require("../models/players")
+const players = require("../../models/player");
+const offlineWhisper = require('../../models/offlineWhisper');
 module.exports = {
     name: 'playerJoined',
     /**
@@ -7,6 +8,7 @@ module.exports = {
      * @param {import("mineflayer").Player} player 
      */
     async execute(bot, player) {
+        // joinDate
         players.findOne({
             username: player.username
         }).then(data => {
@@ -26,5 +28,15 @@ module.exports = {
         }).catch(err => {
             throw err; // Hoặc log lỗi nếu không muốn crash
         });
+
+        // offlineWhisper
+        const offlineMsgs = await offlineWhisper.findOne({ username: player.username });
+        if (offlineMsgs && offlineMsgs.messages.length > 0) {
+            for (const msg of offlineMsgs.messages) {
+                bot.whisper(player.username, `${msg.sender} đã nhắn cho bạn: ${msg.content}`);
+            }
+            
+            await offlineWhisper.deleteOne({ username: player.username });
+        }
     }
 }
